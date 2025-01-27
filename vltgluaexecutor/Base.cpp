@@ -5,17 +5,17 @@ LuaExecutor* GLuaExecutor = new LuaExecutor();
 
 void err(std::string err)
 {
-	MessageBoxA(NULL, err.c_str(), "Îòñîñåøü", 0);
+	MessageBoxA(NULL, err.c_str(), "отсосешь)", 0);
 }
 
-// ëþòî õóåâàÿ óæàñíàÿ òóïàÿ ïàñòà
+// ужасно тупая гнилая хуевая паста
 void LuaExecutor::InitLuaExecutor()
 {
 	HMODULE luaShared = GetModuleHandleA("lua_shared.dll");
 
 	if (!luaShared)
 	{
-		err("íå óäàëîñü èíèöèàëèçðîâàòü luashared");
+		err("пизда luashared");
 		return;
 	}
 
@@ -23,21 +23,21 @@ void LuaExecutor::InitLuaExecutor()
 	ILuaShared = (CLuaShared*)CreateInterface_src("LUASHARED003", NULL);
 	if (!ILuaShared)
 	{
-		err("íå óäàëîñü èíèöèàëèçèðîâàòü ilua èíòåðôåéñ");
+		err("пизда луа интерфейсу");
 		return;
 	}
 
 	luaL_loadString = (_luaL_loadString)GetProcAddress(luaShared, "luaL_loadstring");
 	if (!luaL_loadString)
 	{
-		err("íå óäàëîñü ïîäãðóçèòü lua_loadstring");
+		err("пизда lua_loadstring");
 		return;
 	}
 
 	luaL_pCall = (_luaL_pCall)GetProcAddress(luaShared, "lua_pcall");
 	if (!luaL_pCall)
 	{
-		err("íå óäàëîñü ïîäãðóçèòü lua_pcall");
+		err("пизда lua_pcall");
 		return;
 	}
 
@@ -48,21 +48,21 @@ void LuaExecutor::ExecuteString(char* code)
 {
 	if (!LuaLoaded)
 	{
-		err("èíòåðôåéñ ëóà íå ïîäãðóæåí)))))))");
+		err("ахахахахахах)))))))");
 		return;
 	}
 
 	CLuaInterface = ILuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
 	if (!CLuaInterface)
 	{
-		err("íå ïîëó÷èëîñü ïîäãðóçèòü cluainterface");
+		err("пизда cluainterface");
 		return;
 	}
 
 	pGLuaState = *(DWORD*)(CLuaInterface + 0x4);
 	if (!pGLuaState)
 	{
-		err("íå ïîëó÷èëîñü ïîäãðóçèòü luastate");
+		err("ооо бляяя luastate");
 		return;
 	}
 
