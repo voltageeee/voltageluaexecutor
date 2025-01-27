@@ -5,17 +5,17 @@ LuaExecutor* GLuaExecutor = new LuaExecutor();
 
 void err(std::string err)
 {
-	MessageBoxA(NULL, err.c_str(), "Отсосешь", 0);
+	MessageBoxA(NULL, err.c_str(), "ГЋГІГ±Г®Г±ГҐГёГј", 0);
 }
 
-// люто хуевая ужасная тупая паста
+// Г«ГѕГІГ® ГµГіГҐГўГ Гї ГіГ¦Г Г±Г­Г Гї ГІГіГЇГ Гї ГЇГ Г±ГІГ 
 void LuaExecutor::InitLuaExecutor()
 {
 	HMODULE luaShared = GetModuleHandleA("lua_shared.dll");
 
 	if (!luaShared)
 	{
-		err("не удалось инициализровать luashared");
+		err("Г­ГҐ ГіГ¤Г Г«Г®Г±Гј ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г°Г®ГўГ ГІГј luashared");
 		return;
 	}
 
@@ -23,21 +23,21 @@ void LuaExecutor::InitLuaExecutor()
 	ILuaShared = (CLuaShared*)CreateInterface_src("LUASHARED003", NULL);
 	if (!ILuaShared)
 	{
-		err("не удалось инициализировать ilua интерфейс");
+		err("Г­ГҐ ГіГ¤Г Г«Г®Г±Гј ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§ГЁГ°Г®ГўГ ГІГј ilua ГЁГ­ГІГҐГ°ГґГҐГ©Г±");
 		return;
 	}
 
 	luaL_loadString = (_luaL_loadString)GetProcAddress(luaShared, "luaL_loadstring");
 	if (!luaL_loadString)
 	{
-		err("не удалось подгрузить lua_loadstring");
+		err("Г­ГҐ ГіГ¤Г Г«Г®Г±Гј ГЇГ®Г¤ГЈГ°ГіГ§ГЁГІГј lua_loadstring");
 		return;
 	}
 
 	luaL_pCall = (_luaL_pCall)GetProcAddress(luaShared, "lua_pcall");
 	if (!luaL_pCall)
 	{
-		err("не удалось подгрузить lua_pcall");
+		err("Г­ГҐ ГіГ¤Г Г«Г®Г±Гј ГЇГ®Г¤ГЈГ°ГіГ§ГЁГІГј lua_pcall");
 		return;
 	}
 
@@ -48,21 +48,21 @@ void LuaExecutor::ExecuteString(char* code)
 {
 	if (!LuaLoaded)
 	{
-		err("интерфейс луа не подгружен)))))))");
+		err("ГЁГ­ГІГҐГ°ГґГҐГ©Г± Г«ГіГ  Г­ГҐ ГЇГ®Г¤ГЈГ°ГіГ¦ГҐГ­)))))))");
 		return;
 	}
 
 	CLuaInterface = ILuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
 	if (!CLuaInterface)
 	{
-		err("не получилось подгрузить cluainterface");
+		err("Г­ГҐ ГЇГ®Г«ГіГ·ГЁГ«Г®Г±Гј ГЇГ®Г¤ГЈГ°ГіГ§ГЁГІГј cluainterface");
 		return;
 	}
 
 	pGLuaState = *(DWORD*)(CLuaInterface + 0x4);
 	if (!pGLuaState)
 	{
-		err("не получилось подгрузить luastate");
+		err("Г­ГҐ ГЇГ®Г«ГіГ·ГЁГ«Г®Г±Гј ГЇГ®Г¤ГЈГ°ГіГ§ГЁГІГј luastate");
 		return;
 	}
 
