@@ -62,7 +62,7 @@ void LuaExecutor::ExecuteString(char* code)
 	pGLuaState = *(DWORD*)(CLuaInterface + 0x4);
 	if (!pGLuaState)
 	{
-		err("ооо бляяя luastate");
+		err("ахвхахвхавхахвхахвахвахвхахвх");
 		return;
 	}
 
